@@ -1,0 +1,21 @@
+@media screen and (max-width:400px) {
+    .mobile{
+        display:block !important;
+    }
+
+    .desktop{
+    display: none !important;
+    }
+}
+
+.mobile {
+  display: none;
+}
+
+.desktop {
+  display: block;
+}
+
+body{
+  width: 100%;
+}

@@ -1,0 +1,27 @@
+.body{
+    background-color: #353535;
+    color:#ece4d7;
+    box-sizing: border-box;
+    padding: 3rem 10px;
+}
+
+ul{
+    padding:0 25px;
+}
+
+h1{
+    font-size: 4rem;
+    font-weight: 600;
+    text-align: right;
+    display: inline-block; /* wichtig, damit transform wirkt */
+    transform: scaley(1.8); /* 1.5 = 150% Breite */
+    line-height: 0.85;
+    position: relative;
+}
+p{
+    font-size: 1.5rem;
+}
+#highlight-text{
+    filter:brightness(0.3);
+    transition: filter 0.2s linear;
+}

@@ -7,7 +7,10 @@ import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren
   styleUrl: './who-am-i.component.css'
 })
 export class WhoAmIComponent {
+  ngOnInit(){
 
+    this.counter();
+  }
   @ViewChildren('highlightText') texts!:QueryList<ElementRef<HTMLElement>>;
 
 
@@ -23,4 +26,40 @@ export class WhoAmIComponent {
     })
   }
 
+  hours = 0;
+  minutes = 0;
+  seconds = 0;
+  days = 35;
+  year = 1;
+  counter(){
+    setInterval(() => {
+      this.seconds ++;
+      if(this.hours >= 23){
+        this.days ++;
+        this.hours = 0;
+      }
+
+      if(this.minutes >= 59){
+        this.hours ++;
+        this.minutes = 0;
+      }
+      if(this.seconds >= 59){
+        this.minutes ++;
+        this.seconds = 0;
+      }
+      this.updateDisplay();
+    }, 1000);
+  }
+
+  updateDisplay(){
+      this.count =`${this.year} year${this.year > 1 ? 's' :''}, ` 
+                  +`${this.days} day${this.days>1? 's': ''} and `
+                  + this.checkNumber(this.seconds)  + `${this.seconds > 1 ? ' seconds': ' second' }` ;
+             
+  }
+  checkNumber(n:number) : string{
+    return n < 10? '0' + n: n.toString();
+  }
+
+  count =this.year + "year" + this.days + "days"+ this.hours + ":" + this.minutes + ":" + this.seconds;
 }

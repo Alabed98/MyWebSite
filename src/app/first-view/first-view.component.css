@@ -80,6 +80,12 @@ ul{
     }
 
 }
+@media screen and (max-width:730px){
+
+    .text{
+        padding-top: 20px!important;
+    }
+}
 
 .fixed{
     all: unset;

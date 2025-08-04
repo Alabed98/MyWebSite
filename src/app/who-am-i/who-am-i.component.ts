@@ -29,9 +29,21 @@ export class WhoAmIComponent {
   hours = 0;
   minutes = 0;
   seconds = 0;
-  days = 35;
-  year = 1;
-  counter(){
+  days = 0;
+  year = 0;
+  startDate:Date = new Date('2024-07-01T00:00:00Z');
+
+  
+  counter(){  
+    const currentDate = new Date();
+    const diff = currentDate.getTime() - this.startDate.getTime();
+    const totalSeconds = Math.floor(diff / 1000);
+    this.year = Math.floor(totalSeconds / (365 * 24 * 60 * 60));
+    this.days = Math.floor((totalSeconds/60/60/24) % 365);
+    this.hours = Math.floor(((totalSeconds/60/60) % 24) % 365);
+    this.minutes = Math.floor((totalSeconds % 3600) / 60);
+    this.seconds = totalSeconds % 60;
+
     setInterval(() => {
           this.seconds++;
 

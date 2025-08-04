@@ -33,20 +33,27 @@ export class WhoAmIComponent {
   year = 1;
   counter(){
     setInterval(() => {
-      this.seconds ++;
-      if(this.hours >= 23){
-        this.days ++;
-        this.hours = 0;
-      }
+          this.seconds++;
 
-      if(this.minutes >= 59){
-        this.hours ++;
-        this.minutes = 0;
-      }
-      if(this.seconds >= 59){
-        this.minutes ++;
-        this.seconds = 0;
-      }
+    if (this.seconds >= 60) {
+      this.seconds = 0;
+      this.minutes++;
+    }
+
+    if (this.minutes >= 60) {
+      this.minutes = 0;
+      this.hours++;
+    }
+
+    if (this.hours >= 24) {
+      this.hours = 0;
+      this.days++;
+    }
+
+    if(this.days >= 365){
+      this.days = 0;
+      this.year++;
+    }
       this.updateDisplay();
     }, 1000);
   }
